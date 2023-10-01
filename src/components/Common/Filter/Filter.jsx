@@ -18,7 +18,7 @@ const Filter = ({
     setIsOpen(!isOpen);
   };
   return (
-    <div className={`sm:flex sticky`}>
+    <div className={`sm:flex sticky sm:shadow-inner sm:pr-3`}>
       <div className="home_panel-wrap p-4 pr-5 md:p-2 md:pl-4 md:w-[280px] md:block">
         <div className="text-md sm:text-md md:text-xl font-bold uppercase mb-2 ml-3">
           <h1>Filters</h1>
