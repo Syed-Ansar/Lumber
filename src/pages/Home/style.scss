@@ -1,0 +1,48 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .home_panelList-wrap,
+  .home_panel-wrap,
+  .home_list-wrap {
+    overflow-y: auto;
+  }
+
+  .home_panelList-wrap {
+    flex: 1;
+    display: flex;
+  }
+
+  .home_list-wrap {
+    flex: 1;
+    padding: 1rem;
+  }
+}
+
+.container {
+  position: relative;
+  visibility: hidden;
+}
+
+.image {
+  display: block;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.wrapper:hover .container {
+  visibility: visible;
+  opacity: 0.9;
+}
