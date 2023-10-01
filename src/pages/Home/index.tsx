@@ -1,5 +1,4 @@
 import "./style.scss";
-import FilterPanel from "../../components/Home/FilterPanel";
 import List from "../../components/Home/List";
 import SearchBar from "../../components/Home/SearchBar";
 import { dataList } from "../../constants";
