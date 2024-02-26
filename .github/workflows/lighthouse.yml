@@ -3,25 +3,20 @@ on:
   pull_request:
     branches: ["*"]
 jobs:
-  lighthouse:
+  lhci:
+    name: Lighthouse
     runs-on: ubuntu-latest
-    needs: deploy
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: Build and start the project
-        run: yarn build && yarn start
-
-      - uses: actions/checkout@v2
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v7
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
         with:
-          urls: http://localhost:3000
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse audits to google temporary storage
+          node-version: 20.x
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.13.x
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
